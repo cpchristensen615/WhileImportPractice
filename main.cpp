@@ -21,8 +21,10 @@ int main()
 
   // open the input file
   inFile.open("TestResultsData.dat");
-  inFile.open("AnalyzedData.txt");
 
+
+  outFile.open("AnalyzedData.txt");
+  
   // read in the date - first line of file
   inFile >> date;
   cout << date << endl;
@@ -42,7 +44,7 @@ int main()
   }
 
   outFile << "Total number of cases: " << cumulative_cases << endl;
-  outFile << "Number of Persons Tested: " << count;
+  outFile << "Number of Persons Tested: " << count << endl;
 
   outFile << fixed << showpoint << setprecision(2);
   outFile << "The prevalence is ";
