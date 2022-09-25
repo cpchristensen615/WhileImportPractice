@@ -12,7 +12,7 @@ int main()
   string firstName;
   string date;
   int testResult;
-  int count = 0;
+  int count = -1;
   int cumulative_cases = 0;
 
   // declare stream variables
@@ -21,10 +21,13 @@ int main()
 
   // open the input file
   inFile.open("TestResultsData.dat");
+  inFile.open("AnalyzedData.txt");
 
   // read in the date - first line of file
   inFile >> date;
   cout << date << endl;
+  outFile << date << endl;
+  
 
 
   while(inFile)
@@ -38,9 +41,14 @@ int main()
     inFile >> testResult;  
   }
 
-  cout << "Total number of cases: " << cumulative_cases << endl;
-  cout << "Number of Persons Tested: " << count;
+  outFile << "Total number of cases: " << cumulative_cases << endl;
+  outFile << "Number of Persons Tested: " << count;
+
+  outFile << fixed << showpoint << setprecision(2);
+  outFile << "The prevalence is ";
+  outFile << ( (static_cast<double>(cumulative_cases)) /count)*100;
+  outFile << "%" << endl;
 
   inFile.close();
-    
+  outFile.close(); 
 }
